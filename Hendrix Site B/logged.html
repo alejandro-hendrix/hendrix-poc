@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdn.auth0.com/js/lock-6.js"></script>
+
+        <script src="//use.typekit.net/iws6ohy.js"></script>
+        <script>try{Typekit.load();}catch(e){}</script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- font awesome from BootstrapCDN -->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <script src="auth0-variables.js"> </script>
+        <script src="logged.js"> </script>
+        <script src="http://common.hendrix.clients.amido.com/hendrixPoc.js"> </script>
+        <link href="app.css" rel="stylesheet">
+
+        <!-- Snowplow starts plowing -->
+        <script type="text/javascript">
+            ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+            p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+            };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+            n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","//d1fc8wv8zag5ca.cloudfront.net/2.5.1/sp.js","snowplow"));
+        </script>
+<!-- Snowplow stops plowing -->
+    </head>
+    <body class="home">
+        <div class="container">                    
+              <div class="logged-in-box auth0-box logged-in">
+                <h1 id="logo"><img class="img-rounded" src="https://d30j9s0wbu66bt.cloudfront.net/wp-content/uploads/2015/03/amido-logo1.png" /></h1>
+                <h3>Hendrix - Site B - Logged in</h3>
+                <img class="avatar"/>
+                <h2>Welcome <span class="nickname"></span></h2>
+                <button class="btn-lg btn-primary btn-event1">Trigger event 1</button>
+                <button class="btn-lg btn-success btn-event2">Trigger event 2</button>
+                <button class="btn-lg btn-warning btn-event3">Trigger event 3</button>
+                <button class="btn-lg btn-danger btn-event4">Trigger event 4</button>               
+              </div>
+            </div>
+            <div>
+                <a href="#" class="link-logout">Logout</a>
+            </div>
+        </div>
+    </body>
+</html>

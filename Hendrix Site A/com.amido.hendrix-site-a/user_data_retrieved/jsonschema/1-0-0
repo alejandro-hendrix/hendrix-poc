@@ -1,0 +1,24 @@
+{
+	"$schema": "http//json-schema.org/schema#",	
+	"description": "User data retrieved event",
+	"self" :{
+			"vendor": "hendrix-site-a.amido.com",
+			"name": "user_data_retrieved",
+			"format": "jsonschema",
+			"version": "1-0-0"
+		},
+	"type": "object",
+	"properties": {
+		"nickname": {
+			"type": "string"
+		},
+		"name": {
+			"type": "string"
+		},
+		"email": {
+			"type": "string"
+		}
+	},
+	"required": ["name"],
+	"additionalproperties": true
+}
