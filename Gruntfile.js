@@ -14,5 +14,5 @@ module.exports = function (grunt) {
     }
   });  
   grunt.loadNpmTasks("grunt-simple-mocha");
-  grunt.registerTask("default", ["simplemocha:all"]);
+  grunt.registerTask("test", ["simplemocha:all"]);
 };
