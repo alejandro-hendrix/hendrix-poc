@@ -3,7 +3,7 @@ var chai = require("chai"),
     should = require("should");
 	
 describe("A suite", function() {
-  it("False should be true", function() {
+  it("Broken test - Hendrix PoC", function() {
     expect(false).to.be.true;
   });
 });
