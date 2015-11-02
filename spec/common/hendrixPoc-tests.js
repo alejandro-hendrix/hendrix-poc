@@ -4,7 +4,7 @@ var chai = require("chai"),
 	
 describe("A suite", function() {
   it("Broken test - Hendrix PoC", function() {
-    expect(true).to.be.true;
+    expect(false).to.be.true;
   });
 });
 
