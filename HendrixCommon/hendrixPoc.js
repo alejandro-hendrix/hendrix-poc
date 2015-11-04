@@ -16,8 +16,8 @@
 	}
 
 	hendrixClient.prototype._initSnowplow = function() {
-		this._snowPlow('newTracker', 'cf', 'trial-collector.snplow.com', { // Initialise a tracker
-			appId: 'amido',
+		this._snowPlow('newTracker', 'co', 'collector.hendrix.clients.amido.com', { // Initialise a tracker
+			appId: 'hendrixPoc',
 			cookieDomain: 'web'
 		});
 
