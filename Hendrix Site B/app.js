@@ -9,7 +9,7 @@
       ),
       snowplow: snowplow,
       localStorage: localStorage,
-      igluUri: 'http://hendrix-site-b.amido.com/schemas/com.amido.hendrix-site-b/'
+      igluUri: 'iglu:com.amido/user_data_retrieved/jsonschema/1-0-0'
     };
 
     var hendrixClient = new window.hendrixPoc.hendrixClient(hendrixConfig);
