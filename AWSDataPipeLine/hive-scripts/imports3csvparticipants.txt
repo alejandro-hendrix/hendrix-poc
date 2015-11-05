@@ -1,0 +1,8 @@
+CREATE EXTERNAL TABLE s3_import(a_col datetime, b_col string, c_col string, d_col string)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
+LOCATION 's3://imported-csv.hendrix.clients.amido.com/'; 
+CREATE EXTERNAL TABLE hiveTableName (col1 datetime, col2 string, col3 string, col4 string)
+STORED BY 'org.apache.hadoop.hive.dynamodb.DynamoDBStorageHandler' 
+TBLPROPERTIES ("dynamodb.table.name" = "X_IPTOMAP", 
+"dynamodb.column.mapping" = "col1:date_recorded,col2:email,col3:facebook_user,col4:player_name");
+INSERT OVERWRITE TABLE hiveTableName SELECT * FROM s3_import;
