@@ -25,6 +25,13 @@
       hendrixClient.trackEvent('LoginButton-clicked', 'btn-login');
 
       hendrixClient.login(
+        {
+      authParams: {
+        connection_scopes:{
+          'facebook' : ['user_friends']
+        }
+      }
+    },
         function() {
           window.location.href = "/logged.html";
         },

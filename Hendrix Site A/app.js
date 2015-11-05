@@ -38,7 +38,7 @@
 
       hendrixClient.trackEvent('LoginButton-clicked', 'btn-login');
 
-      hendrixClient.login(
+      hendrixClient.login({},
         function() {
           showLoggedInBox();
           hendrixClient.loadUserProfileAsync(function(profile) {

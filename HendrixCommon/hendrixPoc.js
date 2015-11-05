@@ -87,9 +87,11 @@
 		return this._localStorage.getItem(this._UserTokenName);
 	}
 
-	hendrixClient.prototype.login = function(successCb, failCb) {
+	hendrixClient.prototype.login = function(options, successCb, failCb) {
 		var self = this;
-		self._auth0Lock.show(function(err, profile, token) {
+		self._auth0Lock.show(
+			options,
+			function(err, profile, token) {
 			if (err) {
 				self.trackEvent('LoginFailed');
 				failCb();
