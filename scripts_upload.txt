@@ -1,0 +1,5 @@
+aws s3 cp ./"Hendrix Site B"/ s3://site-b.hendrix.clients.amido.com --region us-west-2 --recursive --exclude "*" --include "*.js"  --include "*.html" --include "*.css"
+
+aws s3 cp ./"Hendrix Site A"/ s3://site-a.hendrix.clients.amido.com --region eu-west-1 --recursive --exclude "*" --include "*.js"  --include "*.html" --include "*.css"
+
+aws s3 cp ./"HendrixCommon"/ s3://common.hendrix.clients.amido.com --region eu-west-1 --recursive --exclude "*" --include "*.js"  --include "*.html" --include "*.css"

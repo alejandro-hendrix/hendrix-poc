@@ -18,7 +18,6 @@
       function() { window.location.href = "/logged.html";}, 
       function() { $('.home').removeClass('hidden');  });
 
-
     $('.btn-login').click(function(e) {
       e.preventDefault();
 
