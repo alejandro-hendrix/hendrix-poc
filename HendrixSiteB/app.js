@@ -25,11 +25,9 @@
 
       hendrixClient.login(
         {
-      authParams: {
-        connection_scopes:{
-          'facebook' : ['user_friends']
-        }
-      }
+          authParams: {
+            connections:['facebookTest2']            
+          }
     },
         function() {
           window.location.href = "/logged.html";
