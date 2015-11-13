@@ -84,7 +84,7 @@
 			{
 				schema: this._igluUri + unstructEvent.schema, 
 				data: unstructEvent.data
-			}
+			});
 	}
 
 	hendrixClient.prototype.getUserItem = function() {
