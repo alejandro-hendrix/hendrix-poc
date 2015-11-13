@@ -80,7 +80,11 @@
 	}
 
 	hendrixClient.prototype.trackUnstructured = function(unstructEvent) {
-		this.track('trackUnstructEvent', this._igluUri + unstructEvent.schema, unstructEvent.data);
+		this._snowPlow('trackUnstructEvent', 
+			{
+				schema: this._igluUri + unstructEvent.schema, 
+				data: unstructEvent.data
+			}
 	}
 
 	hendrixClient.prototype.getUserItem = function() {
