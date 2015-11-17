@@ -13,7 +13,8 @@ $(function(){
 						  client_id:    "nXwKxdF38kIXWV8dG11vFxEOOCw6BwjM", 
 						  access_token: accessToken,
 						  connection:   "facebookTest2",
-						  scope: "openid profile"					  
+						  scope: "openid profile"
+						}					  
 					}).done(function(data){
 						alert(data);
 					});		
