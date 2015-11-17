@@ -6,17 +6,14 @@ $(function(){
                   .split('=')[1];		
                   $.ajax(
                   	{
-                  		method: 'POST',
-	                  	url:'https://amidoltd.auth0.com/oauth/access_token',
-	                  	contentType:'application/json',
-						data: {
-						  client_id:    "nXwKxdF38kIXWV8dG11vFxEOOCw6BwjM", 
-						  access_token: accessToken,
-						  connection:   "facebookTest2",
-						  scope: "openid profile"
-						}					  
-					}).done(function(data){
-						alert(data);
+                  		method: 'GET',
+	                  	url:'https://amidoltd.auth0.com/userinfo',
+						beforeSend: function (xhr) {
+						    xhr.setRequestHeader('Authorization', 'bearer ' + accessToken);
+						},
+						success:function(data){
+							alert(data);
+						}
 					});		
 			}
 
