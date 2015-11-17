@@ -4,13 +4,17 @@ $(function(){
     			 accessToken = lochash.substr(lochash.indexOf('access_token='))
                   .split('&')[0]
                   .split('=')[1];		
-                  $.post('https://amidoltd.auth0.com/oauth/access_token',
-					{
-					  "client_id":    "nXwKxdF38kIXWV8dG11vFxEOOCw6BwjM", 
-					  "access_token": accessToken,
-					  "connection":   "facebookTest2",
-					  "scope": "openid profile"					  
-					}, function(data){
+                  $.ajax(
+                  	{
+                  		method: 'POST',
+	                  	url:'https://amidoltd.auth0.com/oauth/access_token',
+	                  	contentType:'application/json',
+						data: {
+						  client_id:    "nXwKxdF38kIXWV8dG11vFxEOOCw6BwjM", 
+						  access_token: accessToken,
+						  connection:   "facebookTest2",
+						  scope: "openid profile"					  
+					}).done(function(data){
 						alert(data);
 					});		
 			}
