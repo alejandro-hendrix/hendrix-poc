@@ -12,7 +12,7 @@ $(function(){
 						    xhr.setRequestHeader('Authorization', 'bearer ' + accessToken);
 						},
 						success:function(data){
-							alert(data);
+							alert('hello ' + data.name);
 						}
 					});		
 			}
