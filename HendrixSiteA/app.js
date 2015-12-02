@@ -5,7 +5,7 @@
     var uuid = null;
 
     if (cookieUuid){
-      uuid = cookieUuid.value;
+      uuid = cookieUuid;
     }else{ 
       uuid = window.uuid();
       $.cookie('uuid', uuid, {domain:'.amido.com'});
