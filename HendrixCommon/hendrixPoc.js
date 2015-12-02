@@ -11,11 +11,16 @@
 		this._snowPlow = hendrixConfig.snowplow;
 		this._localStorage = hendrixConfig.localStorage;
 		this._igluUri = hendrixConfig.igluUri;
-		this._UserTokenName = 'userToken';
+		this._UserTokenName = 'userToken';			
+		this._uuid = hendrixConfig.uuid;
+
 		this._initSnowplow();
+		
 	}
 
 	hendrixClient.prototype._initSnowplow = function() {
+	//TODO: create custom context
+
 		this._snowPlow('newTracker', 'co', 'collector.hendrix.clients.amido.com', { // Initialise a tracker
 			appId: 'hendrixPoc',
 			cookieDomain: 'web'
@@ -115,6 +120,8 @@
 			}
 		});
 	}
+
+	
 
 	//EVENTS
 

@@ -1,5 +1,16 @@
 (function($, window) {
   $(document).ready(function() {
+    var cookieUuid = $.cookie('uuid');
+
+    var uuid = null;
+
+    if (cookieUuid.value){
+      uuid = cookieUuid.value;
+    }else{ 
+      uuid = window.uuid();
+      $.cookie('uuid', uuid, {domain:'.amido.com'});
+    }
+
     var hendrixConfig = {
       auth0Lock: new Auth0Lock(
         // All these properties are set in auth0-variables.js
@@ -9,7 +20,7 @@
       snowplow: snowplow,
       localStorage: localStorage,
       igluUri: 'iglu:com.amido/',
-      uuid: window.uuid
+      uuid: uuid
     };
 
     var hendrixClient = new window.hendrixPoc.hendrixClient(hendrixConfig);
