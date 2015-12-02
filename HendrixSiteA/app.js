@@ -4,7 +4,7 @@
 
     var uuid = null;
 
-    if (cookieUuid.value){
+    if (cookieUuid){
       uuid = cookieUuid.value;
     }else{ 
       uuid = window.uuid();
