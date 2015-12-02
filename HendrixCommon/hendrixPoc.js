@@ -2,7 +2,7 @@
 
 	function hendrixClient(hendrixConfig) {
 
-		if (!hendrixConfig || !hendrixConfig.auth0Lock || !hendrixConfig.snowplow || !hendrixConfig.localStorage || !hendrixConfig.igluUri) {
+		if (!hendrixConfig || !hendrixConfig.auth0Lock || !hendrixConfig.snowplow || !hendrixConfig.localStorage || !hendrixConfig.igluUri || !hendrixConfig.uuid) {
 			throw "Cannot initialize hendrixClient. Please provide valid constructor parameters."
 			return;
 		}
