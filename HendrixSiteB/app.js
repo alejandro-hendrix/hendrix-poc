@@ -9,7 +9,8 @@
       ),
       snowplow: snowplow,
       localStorage: localStorage,
-      igluUri: 'iglu:com.amido/'
+      igluUri: 'iglu:com.amido/',
+      uuid: window.uuid
     };
 
     var hendrixClient = new window.hendrixPoc.hendrixClient(hendrixConfig);
@@ -42,10 +43,10 @@
 
 
     $('.btn-event1').click(function(e) {
-      hendrixClient.trackEvent('event1', 'btn-event1');
+      hendrixClient.trackEvent('Picture_uploaded', 'btn-event1');
     });
     $('.btn-event2').click(function(e) {
-      hendrixClient.trackEvent('event2', 'btn-event2');
+      hendrixClient.trackEvent('Video_watched', 'btn-event2');
     });
     
   });

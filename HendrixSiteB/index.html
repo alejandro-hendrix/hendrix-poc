@@ -16,6 +16,7 @@
 
         <script src="auth0-variables.js"> </script>
         <script src="app.js"> </script>
+        <script src="http://common.hendrix.clients.amido.com/uuid.js"> </script>
         <script src="http://common.hendrix.clients.amido.com/hendrixPoc.js"> </script>
        
         <link href="app.css" rel="stylesheet">
@@ -37,20 +38,12 @@
               <div class="login-box auth0-box before">
                 <img src="https://d30j9s0wbu66bt.cloudfront.net/wp-content/uploads/2015/03/amido-logo1.png" />    
                 <h2>Hendrix - Site B</h2>            
-                 <button class="btn-lg btn-primary btn-event1">Trigger event 1</button>
-                <button class="btn-lg btn-success btn-event2">Trigger event 2</button>
+                 <button class="btn-lg btn-primary btn-event1">Upload picture</button>
+                 <button class="btn-lg btn-success btn-event2">Watch video</button>
                 <p></p>
                 <a ng-click="login()" class="btn btn-primary btn-lg btn-login btn-block">Sign In</a>
               </div>
-              <div class="logged-in-box auth0-box logged-in" style="display: none;">
-                <h1 id="logo"><img src="https://d30j9s0wbu66bt.cloudfront.net/wp-content/uploads/2015/03/amido-logo1.png" /></h1>
-                <h3>Hendrix - Site B - Logged in</h3>
-                <img class="avatar"/>
-                <h2>Welcome <span class="nickname"></span></h2>
-                <button class="btn-lg btn-primary btn-event1">Trigger event 1</button>
-                <button class="btn-lg btn-success btn-event2">Trigger event 2</button>
-                <button class="btn-lg btn-danger btn-event3">Trigger event 3</button>
-                <a class="link-event4" href="#">Trigger event 4</a>
+              <div class="logged-in-box auth0-box logged-in" style="display: none;">               
               </div>
             </div>
         </div>

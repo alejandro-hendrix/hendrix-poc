@@ -8,7 +8,8 @@
       ),
       snowplow: snowplow,
       localStorage: localStorage,
-      igluUri: 'iglu:com.amido/'
+      igluUri: 'iglu:com.amido/',
+      uuid: window.uuid
     };
 
     var hendrixClient = new window.hendrixPoc.hendrixClient(hendrixConfig);
@@ -36,17 +37,18 @@
       }
     });
 
+    
     $('.btn-event1').click(function(e) {
-      hendrixClient.trackEvent('event1', 'btn-event1');
+      hendrixClient.trackEvent('Opt-in_newsletter', 'btn-event1');
     });
     $('.btn-event2').click(function(e) {
-      hendrixClient.trackEvent('event2', 'btn-event2');
+      hendrixClient.trackEvent('Acknowledge_T_and_C', 'btn-event2');
     });
     $('.btn-event3').click(function(e) {
-      hendrixClient.trackEvent('event3', 'btn-event3');
+      hendrixClient.trackEvent('Update_profile_data', 'btn-event3');
     });
     $('.btn-event4').click(function(e) {
-      hendrixClient.trackEvent('event4', 'btn-event4');
+      hendrixClient.trackEvent('Enter_competition', 'btn-event4');
     });
 
     $('.link-logout').click(function(e) {
