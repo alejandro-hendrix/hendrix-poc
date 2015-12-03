@@ -8,7 +8,7 @@
       uuid = cookieUuid;
     }else{ 
       uuid = window.uuid();
-      $.cookie('uuid', uuid, {domain:'.amido.com'});
+      $.cookie('uuid', uuid, {domain:'.amido.com', expires:100000});
     }
 
     var hendrixConfig = {
@@ -22,7 +22,9 @@
       igluUri: 'iglu:com.amido/',
       uuid: uuid
     };
-
+    
+    setupSnowplow();
+    
     var hendrixClient = new window.hendrixPoc.hendrixClient(hendrixConfig);
 
     hendrixClient.isLoggedInAsync(
@@ -32,7 +34,7 @@
     $('.btn-login').click(function(e) {
       e.preventDefault();
 
-      hendrixClient.trackEvent('LoginButton-clicked', 'btn-login');
+      hendrixClient.trackEvent(hendrixClient.eventCategories.anonymous, 'Prompt-Login', 'btn-login');
 
       hendrixClient.login(
         {
@@ -53,12 +55,20 @@
 
 
     $('.btn-event1').click(function(e) {
-      hendrixClient.trackEvent('Picture_uploaded', 'btn-event1');
+      hendrixClient.trackEvent(hendrixClient.eventCategories.anonymous,'Picture_uploaded', 'btn-event1');
     });
     $('.btn-event2').click(function(e) {
-      hendrixClient.trackEvent('Video_watched', 'btn-event2');
+      hendrixClient.trackEvent(hendrixClient.eventCategories.anonymous,'Video_watched', 'btn-event2');
     });
     
+
+    function setupSnowplow(){
+      ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+    p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+    };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+    n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","//d3ct33uh7gjgnz.cloudfront.net/2.5.2/sp.js","snowplow"));
+    }
+
   });
 
 })(jQuery, window);

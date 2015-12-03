@@ -11,8 +11,19 @@
 		this._snowPlow = hendrixConfig.snowplow;
 		this._localStorage = hendrixConfig.localStorage;
 		this._igluUri = hendrixConfig.igluUri;
-		this._UserTokenName = 'userToken';			
 		this._uuid = hendrixConfig.uuid;
+
+		this._UserTokenName = 'userToken';	
+		this._customContextSchema = 'custom_context/jsonschema/1-0-0';		
+		this.eventCategories = {
+			anonymous: 'anonymous',
+			authenticated: 'authenticated'
+		}
+
+		this._contexts = [{
+				schema: this._igluUri + this._customContextSchema, 
+				data: { "uuid": this._uuid }	
+			 }];
 
 		this._initSnowplow();
 		
@@ -28,7 +39,7 @@
 
 		this._snowPlow('enableActivityTracking', 5, 30);
 		this._snowPlow('enableLinkClickTracking');
-		this._snowPlow('trackPageView');
+		this._snowPlow('trackPageView', null, this._contexts);
 	}
 
 	hendrixClient.prototype.getUserToken = function() {
@@ -71,17 +82,24 @@
 
 	hendrixClient.prototype.logout = function(elementId) {
 		this._localStorage.removeItem(this._UserTokenName);
-		if (elementId) {
-			this.trackEvent('logout', elementId);
-		}
+
+		this.trackEvent(this.eventCategories.authenticated, 'logout', elementId);
+
 	}
 
-	hendrixClient.prototype.track = function(eventType, eventName, elementId) {
-		this._snowPlow(eventType, eventName, elementId);
-	}
 
-	hendrixClient.prototype.trackEvent = function(eventName, elementId) {
-		this.track('trackStructEvent', eventName, elementId);
+	//hendrixClient.prototype.track = function(eventType, eventName, elementId) {
+	//	this._snowPlow(eventType, eventName, elementId);
+	//}
+
+	hendrixClient.prototype.trackEvent = function(category, action, label, property, value) {
+		this._snowPlow('trackStructEvent', 
+			category, 
+			action,
+			label,
+			property,
+			value,
+			this._contexts);
 	}
 
 	hendrixClient.prototype.trackUnstructured = function(unstructEvent) {
@@ -89,7 +107,8 @@
 			{
 				schema: this._igluUri + unstructEvent.schema, 
 				data: unstructEvent.data
-			});
+			},
+			this._contexts);
 	}
 
 	hendrixClient.prototype.getUserItem = function() {
@@ -102,7 +121,7 @@
 			options,
 			function(err, profile, token) {
 			if (err) {
-				self.trackEvent('LoginFailed');
+				self.trackEvent(this.eventCategories.anonymous, 'Login-Failed');
 				failCb();
 			} else {
 				// Save the JWT token.
@@ -112,7 +131,7 @@
 					self._snowPlow('setUserId', profile.email);
 				}
 
-				self.trackEvent('LoginSucceeded');
+				self.trackEvent(this.eventCategories.authenticated, 'Login-Succeeded');
 
 				self.trackUnstructured(new userDataRetrieved(profile));
 
