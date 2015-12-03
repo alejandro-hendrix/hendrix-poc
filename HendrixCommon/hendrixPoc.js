@@ -121,7 +121,7 @@
 			options,
 			function(err, profile, token) {
 			if (err) {
-				self.trackEvent(this.eventCategories.anonymous, 'Login-Failed');
+				self.trackEvent(self.eventCategories.anonymous, 'Login-Failed');
 				failCb();
 			} else {
 				// Save the JWT token.
@@ -131,7 +131,7 @@
 					self._snowPlow('setUserId', profile.email);
 				}
 
-				self.trackEvent(this.eventCategories.authenticated, 'Login-Succeeded');
+				self.trackEvent(self.eventCategories.authenticated, 'Login-Succeeded');
 
 				self.trackUnstructured(new userDataRetrieved(profile));
 
