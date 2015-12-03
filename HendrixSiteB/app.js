@@ -1,5 +1,7 @@
 (function($, window) {
   $(document).ready(function() {
+    setupSnowplow();
+
     var cookieUuid = $.cookie('uuid');
 
     var uuid = null;
@@ -22,8 +24,7 @@
       igluUri: 'iglu:com.amido/',
       uuid: uuid
     };
-    
-    setupSnowplow();
+       
     
     var hendrixClient = new window.hendrixPoc.hendrixClient(hendrixConfig);
 

@@ -1,5 +1,7 @@
 (function($, window) {
   $(document).ready(function() {
+     setupSnowplow();
+
     var cookieUuid = $.cookie('uuid');
 
     var uuid = null;
@@ -23,7 +25,6 @@
       uuid: uuid
     };
     
-    setupSnowplow();
     
     var hendrixClient = new window.hendrixPoc.hendrixClient(hendrixConfig);
 
