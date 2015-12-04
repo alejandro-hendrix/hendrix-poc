@@ -133,7 +133,14 @@
 
 				self.trackEvent(self.eventCategories.authenticated, 'Login-Succeeded');
 
-				self.trackUnstructured(new userDataRetrieved(profile));
+				if (profile.user_id.indexOf("facebook") > -1) 
+				{
+					self.trackUnstructured(new facebookProfileRead(profile));
+				}
+				else
+				{
+					self.trackUnstructured(new userDataRetrieved(profile));
+				}
 
 				successCb();
 			}
@@ -157,14 +164,47 @@
 			"email": profile.email
 		};
 	}
-
 	userDataRetrieved.prototype = new unstructEvent;
 	userDataRetrieved.prototype.constructor = userDataRetrieved;
+
+	function facebookProfileRead(profile){
+		this.schema = 'facebook_profile_read/jsonschema/1-0-0';
+		this.data = {
+			"name": profile.name,
+			"email": profile.email,
+			"given_name": profile.given_name,
+			"family_name": profile.family_name,
+			"gender": profile.gender,
+			"picture": profile.picture,
+			"age_range_min": profile.age_range.min,
+			"birthday": profile.birthday,
+			"updated_time": profile.updated_time,
+			"installed": profile.installed,
+			"is_verified": profile.verified,
+			"link": profile.link,
+			"locale": profile.locale,
+			"name_format": profile.name_format,
+			"timezone": profile.timezone,
+			"third_party_id": profile.third_party_id,
+			"verified": profile.verified,
+			"nickname": profile.nickname,
+			"email_verified": profile.email_verified,
+			"clientID": profile.clientID,
+			"updated_at": profile.updated_at ,
+			"user_id": profile.user_id,
+			"created_at": profile.created_at,
+			"global_client_id": profile.global_client_id
+			}
+	}
+	facebookProfileRead.prototype = new unstructEvent;
+	facebookProfileRead.prototype.constructor = facebookProfileRead;
+
 
 
 	// Namespace declaration
 	namespace.hendrixClient = hendrixClient;
 	namespace.unstructEvent = unstructEvent;
 	namespace.userDataRetrieved = userDataRetrieved;
+	namespace.facebookProfileRead = facebookProfileRead;
 
 })(window.hendrixPoc = window.hendrixPoc || {});
