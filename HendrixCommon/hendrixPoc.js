@@ -30,7 +30,6 @@
 	}
 
 	hendrixClient.prototype._initSnowplow = function() {
-	//TODO: create custom context
 
 		this._snowPlow('newTracker', 'co', 'collector.hendrix.clients.amido.com', { // Initialise a tracker
 			appId: 'hendrixPoc',
