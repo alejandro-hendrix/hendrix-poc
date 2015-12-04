@@ -175,13 +175,13 @@
 			"given_name": profile.given_name,
 			"family_name": profile.family_name,
 			"gender": profile.gender,
-			"picture": profile.picture,
+			"picture": '',
 			"age_range_min": profile.age_range.min,
 			"birthday": profile.birthday,
 			"updated_time": profile.updated_time,
 			"installed": profile.installed,
 			"is_verified": profile.verified,
-			"link": profile.link,
+			"link": '',
 			"locale": profile.locale,
 			"name_format": profile.name_format,
 			"timezone": profile.timezone,
@@ -190,7 +190,7 @@
 			"nickname": profile.nickname,
 			"email_verified": profile.email_verified,
 			"clientID": profile.clientID,
-			"updated_at": profile.updated_at ,
+			"updated_at": profile.updated_at,
 			"user_id": profile.user_id,
 			"created_at": profile.created_at,
 			"global_client_id": profile.global_client_id
@@ -198,7 +198,6 @@
 	}
 	facebookProfileRead.prototype = new unstructEvent;
 	facebookProfileRead.prototype.constructor = facebookProfileRead;
-
 
 
 	// Namespace declaration
